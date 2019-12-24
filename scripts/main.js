@@ -259,16 +259,20 @@
 
     var homeScreen = function () {
         var title = $('<h1>');
+        var description = $('<p>');
         var senseiImage = $('<img>');
         var startButton = $('<p>');
         title.addClass('title');
-        title.text('shiba sensei');
+        title.text('SHIBA SENSAI');
+        description.addClass('description');
+        description.text('an infinite puzzle game by Nat Sharpe, Michael Lohmeier, and Xavier Duncan.');
         senseiImage.attr('src', 'images/sensei.jpg')
         senseiImage.addClass('sensei-image');
-        startButton.text('do test');
+        startButton.text("play");
         startButton.addClass('start-button');
         main.append(title);
         main.append(senseiImage);
+        main.append(description);
         main.append(startButton);
         startButton.on('click', gameLogic); 
     }
