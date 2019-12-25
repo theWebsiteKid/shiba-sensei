@@ -39,63 +39,13 @@
 	skipButton.addClass('skip-button');
 
 	var leaderboardScreen = function() {
-		var players = $('<p>');
-		var playersNum = $('<h1>');
-		var speed = $('<p>');
-		var speedNum = $('<h1>');
-		var agility = $('<p>');
-		var agilityNum = $('<h1>');
-		var willPower = $('<p>');
-		var willPowerNum = $('<h1>');
 		var playButton = $('<p>');
 		var resetGame = function() {
 			document.location.reload();
 		};
-		var calcRank = function(score, totalStat, type) {
-			var average = totalStat / playersStat;
-			var rank;
-			var high = 'top doge';
-			var low = 'much bad';
-			if (type !== 'speed') {
-				high = 'much bad';
-				low = 'top doge';
-			}
-			if (score <= average * 0.5) {
-				rank = low;
-			} else if (score > average * 0.5 && score < average * 1.5) {
-				rank = 'so normal';
-			} else {
-				rank = high;
-			}
-			return rank;
-		};
-		players.addClass('small-words');
-		players.text('other players:');
-		playersNum.addClass('endTitle2');
-		playersNum.text(`${playersStat}`);
-		speed.addClass('small-words');
-		speed.text('speed:');
-		speedNum.addClass('endTitle2');
-		speedNum.text(`${calcRank(numPuzzles, speedStat, 'speed')}`);
-		agility.addClass('small-words');
-		agility.text('agility:');
-		agilityNum.addClass('endTitle2');
-		agilityNum.text(`${calcRank(numMoves, agilityStat, 'agility')}`);
-		willPower.addClass('small-words');
-		willPower.text('will power:');
-		willPowerNum.addClass('endTitle2');
-		willPowerNum.text(`${calcRank(numSkips, willPowerStat, 'will power')}`);
 		playButton.text('play again');
 		playButton.addClass('skill-button');
-		main.empty(main.children);
-		main.append(speed);
-		main.append(speedNum);
-		main.append(agility);
-		main.append(agilityNum);
-		main.append(willPower);
-		main.append(willPowerNum);
-		main.append(players);
-		main.append(playersNum);
+		main.empty(main.children);``
 		main.append(playButton);
 		playButton.on('click', resetGame);
 	};
