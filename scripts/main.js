@@ -101,12 +101,15 @@
 	};
 
 	var endScreen = function() {
-		var endTitle = $('<h1>');
+		var title = $('<h1>');
 		var solves = $('<h2>');
         var skillButton = $('<p>');
         var playButton = $('<p>');
-		endTitle.addClass('endTitle');
-		endTitle.text('GAME OVER');
+        var resetGame = function() {
+			document.location.reload();
+		};
+		title.addClass('title');
+		title.text('GAME OVER');
 		solves.addClass('endTitle2');
 		solves.text(`Solved ${numPuzzles} puzzles in ${numMoves} moves, skipped ${numSkips}.`);
 		skillButton.text('high scores');
@@ -114,7 +117,7 @@
         playButton.addClass('skill-button');
         playButton.text('play again');
 		main.empty(main.children);
-		main.append(endTitle);
+		main.append(title);
 		main.append(solves);
         main.append(skillButton);
         main.append(playButton);
