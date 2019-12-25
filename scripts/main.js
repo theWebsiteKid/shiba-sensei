@@ -1,4 +1,4 @@
-(function iife() {
+(() => {
 	// init global variables
 	var url = 'http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true';
 	var imagesSorted = [
@@ -38,7 +38,7 @@
 	skipButton.text('skip');
 	skipButton.addClass('skip-button');
 
-	var skillScreen = function() {
+	var leaderboardScreen = function() {
 		var players = $('<p>');
 		var playersNum = $('<h1>');
 		var speed = $('<p>');
@@ -103,7 +103,7 @@
 	var endScreen = function() {
 		var title = $('<h1>');
 		var solves = $('<h2>');
-        var skillButton = $('<p>');
+        var leaderboard = $('<p>');
         var playButton = $('<p>');
         var resetGame = function() {
 			document.location.reload();
@@ -112,16 +112,16 @@
 		title.text('GAME OVER');
 		solves.addClass('endTitle2');
 		solves.text(`Solved ${numPuzzles} puzzles in ${numMoves} moves, skipped ${numSkips}.`);
-		skillButton.text('high scores');
-        skillButton.addClass('skill-button');
+		leaderboard.text('leaderboard');
+        leaderboard.addClass('skill-button');
         playButton.addClass('skill-button');
         playButton.text('play again');
 		main.empty(main.children);
 		main.append(title);
 		main.append(solves);
-        main.append(skillButton);
+        main.append(leaderboard);
         main.append(playButton);
-        skillButton.on('click', skillScreen);
+        leaderboard.on('click', leaderboardScreen);
         playButton.on('click', resetGame);
 	};
 
@@ -268,7 +268,7 @@
 		var senseiImage = $('<img>');
 		var startButton = $('<p>');
 		title.addClass('title');
-		title.text('SHIBA SENSAI');
+		title.text('SHIBA SENSEI');
 		description.addClass('description');
 		description.text('an infinite puzzle game by Nat Sharpe, Michael Lohmeier, and Xavier Duncan.');
 		senseiImage.attr('src', 'images/sensei.jpg');
