@@ -122,7 +122,7 @@ body {
 
 @media (min-width: 300px) {
 	.puzzle-board {
-		--board-width: 100%;
+		--board-width: 100vw;
 		--board-height: var(--board-width);
 	}
 	.endTitle {
@@ -137,8 +137,8 @@ body {
 
 @media (min-width: 360px) {
 	.puzzle-board {
-		--board-width: 100%;
-		--board-height: var(--board-width);
+		--board-width: 100vw;
+		--board-height: var(--board-width);;
 	}
 	.small-words {
 		width: 40%;
