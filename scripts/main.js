@@ -21,11 +21,6 @@
 	var numPuzzles = 0;
 	var numMoves = 0;
 	var numSkips = 0;
-	var averageNumMoves = numMoves / numPuzzles;
-	var speedStat = 800;
-	var agilityStat = 4000;
-	var willPowerStat = 1000;
-	var playersStat = 100;
 
 	// init global DOM elements
 	var main = $('.main');
@@ -192,7 +187,7 @@
 						timer.text('0:0' + seconds);
 					}
 					if (seconds < 0) {
-						timer.text('time up!');
+						timer.text('TIME UP');
 					}
 					if (seconds < -1) {
 						isPaused = true;
