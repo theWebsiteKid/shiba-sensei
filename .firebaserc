@@ -1,5 +1,5 @@
 {
   "projects": {
-    "project": "shibe-puzzle"
+    "default": "shiba-sensei"
   }
 }
