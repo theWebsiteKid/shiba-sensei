@@ -212,6 +212,7 @@
 		var description = $('<p>');
 		var senseiImage = $('<img>');
 		var startButton = $('<p>');
+		var loginUI = $('<div>');
 		title.addClass('title');
 		title.text('SHIBA SENSEI');
 		description.addClass('description');
@@ -220,10 +221,12 @@
 		senseiImage.addClass('sensei-image');
 		startButton.text('play');
 		startButton.addClass('start-button');
+		loginUI.attr('id', 'firebaseui-auth-container');
 		main.append(title);
 		main.append(senseiImage);
 		main.append(description);
 		main.append(startButton);
+		main.append(loginUI);
 		startButton.on('click', gameLogic);
 	};
 
