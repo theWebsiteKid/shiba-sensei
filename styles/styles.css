@@ -83,7 +83,9 @@ body {
 
 .start-button,
 .skip-button,
+.quit-button,
 .skill-button {
+	display: inline-block;
 	background-color: lightseagreen;
 	margin: 0.75rem;
 	padding: 0.75rem 3.5rem;
@@ -93,8 +95,12 @@ body {
 	color: floralwhite;
 	border-radius: 6%;
 	box-shadow: 2px 2px 4px #000000;
+} .alert {
+	background-color:red;
 }
+
 .start-button:hover,
+.quit-button:hover,
 .skip-button:hover,
 .skill-button:hover {
 	box-shadow: 3px 3px 7px #000000;

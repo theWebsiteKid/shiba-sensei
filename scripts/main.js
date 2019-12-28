@@ -27,17 +27,22 @@
 	var timer = $('<h1>');
 	var puzzleBoard = $('<div>');
 	var skipButton = $('<p>');
+	var quitButton = $('<p>');
 	timer.addClass('timer');
 	timer.text('1:00');
 	puzzleBoard.addClass('puzzle-board');
 	skipButton.text('skip');
 	skipButton.addClass('skip-button');
+	quitButton.text('quit');
+	quitButton.addClass('quit-button');
+	quitButton.addClass('alert');
+
+	var resetGame = () => {
+		document.location.reload();
+	};
 
 	var leaderboardScreen = function() {
 		var playButton = $('<p>');
-		var resetGame = function() {
-			document.location.reload();
-		};
 		playButton.text('play again');
 		playButton.addClass('skill-button');
 		main.empty(main.children);``
@@ -202,8 +207,10 @@
 		main.append(timer);
 		main.append(puzzleBoard);
 		main.append(skipButton);
+		main.append(quitButton);
 		puzzleBoard.on('click', swapPieces);
 		skipButton.on('click', skipPuzzle);
+		quitButton.on('click', resetGame);
 		printPuzzle();
 	};
 
