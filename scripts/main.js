@@ -53,26 +53,29 @@
 	var endScreen = function() {
 		var title = $('<h1>');
 		var solves = $('<h2>');
-        var leaderboard = $('<p>');
-        var playButton = $('<p>');
-        var resetGame = function() {
+    var leaderboard = $('<p>');
+    var playButton = $('<p>');
+    var resetGame = function() {
 			document.location.reload();
 		};
+		var wiki = $('<a>');
 		title.addClass('title');
 		title.text('GAME OVER');
 		solves.addClass('endTitle2');
 		solves.text(`Solved ${numPuzzles} puzzles in ${numMoves} moves, skipped ${numSkips}.`);
 		leaderboard.text('leaderboard');
-        leaderboard.addClass('skill-button');
-        playButton.addClass('skill-button');
-        playButton.text('play again');
+    leaderboard.addClass('skill-button');
+    playButton.addClass('skill-button');
+		playButton.text('play again');
+		wiki.text('What is a shiba?')
 		main.empty(main.children);
 		main.append(title);
 		main.append(solves);
-        main.append(leaderboard);
-        main.append(playButton);
-        leaderboard.on('click', leaderboardScreen);
-        playButton.on('click', resetGame);
+		main.append(leaderboard);
+		main.append(playButton);
+		main.append(wiki);
+		leaderboard.on('click', leaderboardScreen);
+		playButton.on('click', resetGame);
 	};
 
 	var gameLogic = function() {
@@ -115,10 +118,10 @@
 				setPuzzleBoard();
 			}
 		};
-		var printPuzzle = function() {
+		let printPuzzle = () => {
 			$.get('https://my-little-cors-proxy.herokuapp.com/' + url, getImages);
 		};
-		var skipPuzzle = function(event) {
+		let skipPuzzle = (event) => {
 			event.preventDefault();
 			oneClick = false;
 			isPaused = true;
