@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shiba Sensei</title>
+  <link rel="icon" href="./images/favicon.jpg" type="image/x-icon"/>
+  <!-- Styles -->
+  <link rel="stylesheet" href="./styles/styles.css">
+  <!-- FirebaseUI Auth CSS -->
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-firestore.js"></script>
+  <!-- init firebase -->
+  <script src="./scripts/firebase.js" defer></script>
+</head>
+<body>
+  <!-- Landing Page -->
+  <div class="landing" style="margin: 20px auto 0; color: #fff; text-shadow: #000 2px 5px; font-size: 16px; width: 100%; max-width: 600px; text-align: center;">
+    <div id="whenSignedOut" style="max-width: 300px; padding: 25px; margin: 0 auto;">
+      <img src="./images/sensei.jpg" alt="Shiba Sensei Logo" style="width: 100%; max-width: 350px; border-radius: 50%;">
+      <br/><br/>
+      <h1 style="display: inline;">SHIBA SENSEI</h1>
+      <p>an infinite puzzle game by Nat Sharpe, Michael Lohmeier, and Xavier Duncan.</p>
+      <button class="btn" id="signInBtn">Login with Google</button>
+      &nbsp;
+      <button class="btn" id="continueAsGuestBtn">Play as Guest</button>
+    </div>
+    <div id="whenSignedIn">
+      <div id="userDetails"></div>
+      <button class="btn" id="signOutBtn" style="background-color: red;">Sign Out</button>
+      &nbsp;
+      <button class="btn" id="startBtn" style="background-color: orange;">Restart Game</button>
+      <!-- Game Screen -->
+      <div class="main" style="margin: 0; padding: 0"></div>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="scripts/howler.js"></script>
+  <script src="scripts/main.js"></script>
+  <script>
+    document.getElementById('startBtn').addEventListener('click', () => console.log('start btn works'));
+    document.getElementById('startBtn').addEventListener('click', () => window.location.assign("./"));
+    document.getElementById('skipBtn').addEventListener('click', () => console.log('skip btn works'));
+  </script>
+</body>
+</html>
