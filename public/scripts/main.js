@@ -20,31 +20,49 @@
 	// init stats received-from or sent-to Firebase
 	var numPuzzles = 0;
 	var numMoves = 0;
-	var numSkips = 0;
+	// var numSkips = 0;
 
 	// init global DOM elements
 	var main = $('.main');
 	var timer = $('<h1>');
 	var puzzleBoard = $('<div>');
-	var skipButton = $('<p>');
-	var quitButton = $('<p>');
+	var skipButton = $('<button>');
+	var quitButton = $('<button>');
 	timer.addClass('timer');
 	timer.text('1:00');
 	puzzleBoard.addClass('puzzle-board');
 	skipButton.text('skip');
-	skipButton.addClass('skip-button');
+	skipButton.addClass('btn');
 	quitButton.text('quit');
-	quitButton.addClass('quit-button');
+	quitButton.addClass('btn');
 	quitButton.addClass('alert');
 
+	const HomeScreen = () => {
+		const title = $('<p>')
+		const description = $('<p>');
+		const senseiImage = $('<img>');
+		const startButton = $('<button>');
+		description.addClass('description');
+		title.text('💥 How to Play 💥')
+		description.text('Tap to select a puzzle piece, then tap another piece to swap them. Next puzzle loads after current one is solved. Game starts with 60 seconds; you gain a 10 second bonus for each solved puzzle.');
+		senseiImage.attr('src', 'images/sensei.jpg');
+		senseiImage.addClass('sensei-image');
+		startButton.text('Let\'s Play!');
+		startButton.addClass('btn');
+		main.append(title);
+		main.append(description);
+		main.append(startButton);
+		startButton.on('click', gameLogic);
+	};
+	
 	var resetGame = () => {
 		document.location.reload();
 	};
 
 	var leaderboardScreen = function() {
-		var playButton = $('<p>');
+		var playButton = $('<button>');
 		playButton.text('play again');
-		playButton.addClass('skill-button');
+		playButton.addClass('btn');
 		main.empty(main.children);``
 		main.append(playButton);
 		playButton.on('click', resetGame);
@@ -53,32 +71,29 @@
 	var endScreen = function() {
 		var title = $('<h1>');
 		var solves = $('<h2>');
-    var leaderboard = $('<p>');
-    var playButton = $('<p>');
-    var resetGame = function() {
+		var leaderboard = $('<button>');
+		var playButton = $('<button>');
+		var resetGame = function() {
 			document.location.reload();
 		};
-		var wiki = $('<a>');
 		title.addClass('title');
 		title.text('GAME OVER');
 		solves.addClass('endTitle2');
-		solves.text(`Solved ${numPuzzles} puzzles in ${numMoves} moves, skipped ${numSkips}.`);
+		solves.text(`Solved ${numPuzzles} puzzles in ${numMoves} moves.`);
 		leaderboard.text('leaderboard');
-    leaderboard.addClass('skill-button');
-    playButton.addClass('skill-button');
+		leaderboard.addClass('btn');
+		playButton.addClass('btn');
 		playButton.text('play again');
-		wiki.text('What is a shiba?')
 		main.empty(main.children);
 		main.append(title);
 		main.append(solves);
-		main.append(leaderboard);
-		main.append(playButton);
-		main.append(wiki);
+		// main.append(leaderboard);
+		// main.append(playButton);
 		leaderboard.on('click', leaderboardScreen);
 		playButton.on('click', resetGame);
 	};
 
-	var gameLogic = function() {
+	let gameLogic = function() {
 		var seconds = 60;
 		var isPaused = true;
 		var bonus = false;
@@ -125,7 +140,7 @@
 			event.preventDefault();
 			oneClick = false;
 			isPaused = true;
-			numSkips++;
+			// numSkips++;
 			printPuzzle();
 			growlOnClick.play();
 		};
@@ -196,6 +211,13 @@
 					}
 					if (seconds < 0) {
 						timer.text('TIME UP');
+						((numPuzzles, numMoves) => {
+							firebase.database().ref().child('/leaderboard/users/').set({
+								puzzles: numPuzzles,
+								moves: numMoves,
+								// skips: numSkips,
+							});
+						});
 					}
 					if (seconds < -1) {
 						isPaused = true;
@@ -207,38 +229,13 @@
 			}, 1000);
 		}, 1000);
 		main.empty(main.children);
+		// main.append(skipButton, quitButton);
 		main.append(timer);
 		main.append(puzzleBoard);
-		main.append(skipButton);
-		main.append(quitButton);
 		puzzleBoard.on('click', swapPieces);
 		skipButton.on('click', skipPuzzle);
 		quitButton.on('click', resetGame);
 		printPuzzle();
 	};
-
-	var homeScreen = function() {
-		var title = $('<h1>');
-		var description = $('<p>');
-		var senseiImage = $('<img>');
-		var startButton = $('<p>');
-		var loginUI = $('<div>');
-		title.addClass('title');
-		title.text('SHIBA SENSEI');
-		description.addClass('description');
-		description.text('an infinite puzzle game by Nat Sharpe, Michael Lohmeier, and Xavier Duncan.');
-		senseiImage.attr('src', 'images/sensei.jpg');
-		senseiImage.addClass('sensei-image');
-		startButton.text('play');
-		startButton.addClass('start-button');
-		loginUI.attr('id', 'firebaseui-auth-container');
-		main.append(title);
-		main.append(senseiImage);
-		main.append(description);
-		main.append(startButton);
-		main.append(loginUI);
-		startButton.on('click', gameLogic);
-	};
-
-	homeScreen();
+	HomeScreen();
 })();
