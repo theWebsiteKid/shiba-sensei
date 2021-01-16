@@ -1,4 +1,4 @@
-# Shiba-Sensei
+# shiba-sensei: an infinite puzzle game
 <a href=https://shiba-sensei.web.app/>Play Game!</a>
 
 Shiba Sensei is a infinite puzzle game built w/ vanilla JS/HTML/CSS.
