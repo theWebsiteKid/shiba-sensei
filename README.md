@@ -5,7 +5,7 @@ Shiba Sensei is a infinite puzzle game built w/ vanilla JS/HTML/CSS. It uses two
 
 This is what a solved image looks like:
 
-![Shiba Inu](https://cdn.shibe.online/shibes/cafbd35584cd87d41b67c1202eb07175145bfb0d.jpg)
+![Shiba Inu](https://shiba-sensei.web.app/images/sensei.jpg)
 
 Good Luck!
 
